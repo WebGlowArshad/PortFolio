@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshad Khan | Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0a0a1a;
+            --darker-bg: #050510;
+            --accent: #00f7ff;
+            --accent-alt: #ff00e5;
+            --text: #f0f0ff;
+            --text-secondary: #a0a0c0;
+            --card-bg: rgba(15, 15, 40, 0.7);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --glow: 0 0 15px var(--accent), 0 0 30px rgba(0, 247, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 119, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 221, 0.05) 0%, transparent 20%);
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 25, 0.8);
+            border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent), var(--accent-alt));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            position: relative;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            box-shadow: var(--glow);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-shadow: var(--glow);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            margin-top: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--accent), var(--accent-alt));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 2rem auto;
+            box-shadow:
+                0 0 50px rgba(0, 247, 255, 0.5),
+                0 0 100px rgba(255, 0, 229, 0.3);
+            border: 3px solid var(--accent);
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%) brightness(1.1);
+        }
+
+        /* Neon Button */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+            margin: 0.5rem;
+            box-shadow: var(--glow);
+        }
+
+        .btn:hover {
+            color: var(--darker-bg);
+            box-shadow: 0 0 30px var(--accent);
+            background: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 10%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-alt));
+            border-radius: 10px;
+            box-shadow: var(--glow);
+        }
+
+        /* Journey Section */
+        .journey {
+            background: var(--darker-bg);
+            position: relative;
+        }
+
+        .journey-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .journey-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .journey-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .journey-content .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .milestones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .milestone-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .milestone-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .milestone-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: var(--glow);
+        }
+
+        .milestone-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .milestone-card p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent);
+        }
+
+        .skill-card h3 i {
+            font-size: 1.8rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-alt));
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progressGlow 1.5s infinite;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 247, 255, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+            border-color: var(--accent);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-detail i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 247, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glow);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: rgba(10, 10, 25, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker-bg);
+            padding: 3rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            box-shadow: var(--glow);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+            }
+
+            100% {
+                text-shadow: 0 0 20px rgba(255, 0, 229, 0.8), 0 0 30px rgba(255, 0, 229, 0.6);
+            }
+        }
+
+        @keyframes progressGlow {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 25, 0.95);
+                width: 250px;
+                height: calc(100vh - 80px);
+                padding: 2rem;
+                transition: var(--transition);
+                backdrop-filter: blur(10px);
+                border-left: 1px solid var(--accent);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 101;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .milestones {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                width: 100%;
+            }
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: var(--dark-bg);
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glow);
+            z-index: 999;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--dark-bg);
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Arshad Khan</div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#journey">My Journey</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-image">
+            <img src="492697216_1894279891374277_5282158829532128727_n.jpg" alt="Arshad Khan">
+        </div>
+        <div class="hero-content">
+            <h1>Arshad Khan</h1>
+            <h2>Web Developer & Digital Marketer</h2>
+            <p>I didn't come from tech — I worked my way into it. From a commerce graduate to a passionate self-taught
+                developer, my journey reflects my belief: where there's consistency and hunger to grow, no background is
+                a barrier.</p>
+            <div>
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#journey" class="btn" style="background: rgba(0, 247, 255, 0.1);">My Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <h2 class="section-title">My Journey</h2>
+        <div class="journey-content">
+            <h3>From Accountant to Web Developer</h3>
+            <p>My name is <span class="highlight">Arshad Khan</span>, and I come from a non-technical background with a
+                <span class="highlight">B.Com degree</span>. But my real journey didn't start after graduation — it
+                started during it.
+            </p>
+
+            <p>While pursuing my graduation, I was also working as an <span class="highlight">accountant at an Asian
+                    Paints store</span> to manage my fees and support my family. Balancing studies and a full-time job
+                wasn't easy, but I never let go of my dreams. Deep down, I always had a strong interest in technology. I
+                wanted to build something digital, something impactful.</p>
+
+            <p>Even though I wasn't from an IT background, I was determined to step into the tech world. I began
+                learning <span class="highlight">Digital Marketing</span> on my own — exploring tools like <span
+                    class="highlight">Meta Suite, Meta Ads, and Google Ads</span>. Slowly, I started building websites
+                using <span class="highlight">WordPress</span>, turning small ideas into working platforms.</p>
+
+            <p>But I wasn't satisfied. I wanted more control, more creativity. That's when I took the leap into <span
+                    class="highlight">web development</span> — learning <span class="highlight">HTML, CSS, and
+                    JavaScript</span>. It opened a whole new world for me.</p>
+
+            <p>Today, with over <span class="highlight">2.5 years of experience</span> in Web Development, SEO, and
+                Digital Marketing, I work on creating responsive websites, optimizing content for search engines, and
+                helping brands grow online.</p>
+
+            <p><span class="highlight">I didn't come from tech — I worked my way into it. And I'm just getting
+                    started.</span></p>
+
+            <div class="milestones">
+                <div class="milestone-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>B.Com Graduate</h4>
+                    <p>Commerce background with self-taught tech skills</p>
+                </div>
+
+                <div class="milestone-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Accountant</h4>
+                    <p>Worked at Asian Paints while studying</p>
+                </div>
+
+                <div class="milestone-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Self-Taught</h4>
+                    <p>Learned Digital Marketing & Web Development</p>
+                </div>
+
+                <div class="milestone-card">
+                    <i class="fas fa-rocket"></i>
+                    <h4>2.5+ Years</h4>
+                    <p>Experience in Web Dev & Digital Marketing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3><i class="fab fa-html5"></i> Frontend Development</h3>
+                <p>Creating responsive websites with HTML, CSS, and JavaScript</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fa-brands fa-python"></i></i>Python</h3>
+                <p>Using Python for data analysis, automation, and building backend logic for dynamic applications.</p>
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fa-solid fa-database"></i></i>SQL</h3>
+                <p>Writing complex SQL queries to extract, filter, and manage data efficiently from relational databases
+                    for analysis and reporting.</p>
+
+
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fab fa-wordpress"></i> WordPress</h3>
+                <p>Building and customizing WordPress websites</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-search"></i> SEO</h3>
+                <p>Search Engine Optimization and content strategy</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 88%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-bullhorn"></i> Digital Marketing</h3>
+                <p>Meta Ads, Google Ads, and marketing strategies</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 92%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-paint-brush"></i> UI/UX Design</h3>
+                <p>Designing intuitive user experiences</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-chart-line"></i> Analytics</h3>
+                <p>Tracking and analyzing website performance</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://www.trainingya.com/wp-content/uploads/2025/07/Power-BI-Training-in-Patna.jpg"
+                        alt="E-commerce Project">
+                </div>
+                <div class="project-info">
+                    <h3>Education Platform</h3>
+                    <p>Developed a dynamic education platform with features like course listings, student dashboards,
+                        enrollment system, and content management.</p>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">LMS</span>
+                        <span class="tech-tag">WooCommerce</span>
+                        <span class="tech-tag">SEO</span>
+                    </div>
+                    <a href="https://www.trainingya.com/" class="btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                        alt="Marketing Project">
+                </div>
+                <div class="project-info">
+                    <h3>Ik Digital Agency</h3>
+                    <p>Comprehensive marketing strategy that increased client revenue by 150%.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Meta Ads</span>
+                        <span class="tech-tag">Google Ads</span>
+                        <span class="tech-tag">Digital Marketing</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://kreonprojects.com/wp-content/uploads/2024/02/cropped-KREON-LOGO_PNG-3-2.png"
+                        alt="Kreon Interior Design">
+                </div>
+                <div class="project-info">
+                    <h3>Kreon Projects</h3>
+                    <p>"We don't just design spaces — we craft experiences that feel like home."</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Interior Designing</span>
+                        <span class="tech-tag">SEO</span>
+                        <span class="tech-tag">Meta Ads</span>
+                    </div>
+                    <a href="https://kreonprojects.com" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://cms.kiglee.in/wp-content/uploads/2024/03/kiglee-removebg-preview.png"
+                        alt="Blog Project">
+                </div>
+                <div class="project-info">
+                    <h3>Kiglee</h3>
+                    <p>You Work for Growth in Children; We Work for Your Growth,
+                        Preschool and Day Care App.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Meta Ads</span>
+                        <span class="tech-tag">SEO</span>
+                        <span class="tech-tag">Content Strategy</span>
+                    </div>
+                    <a href="https://cms.kiglee.in/" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://img.freepik.com/free-photo/handshake-businessmen_1098-742.jpg?t=st=1752669937~exp=1752673537~hmac=1a8aa958de85c7eec09c0d0768bcc21a49b641f27bfda2b331ef30b5c66c1496&w=1380"
+                        alt="Blog Project">
+                </div>
+                <div class="project-info">
+                    <h3>Stay Tuned — Innovation in Progress 🚀</h3>
+                    <p>Code mode: ON. Coffee strong. Tabs open. Something awesome's cooking in the terminal...</p>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">Learn</span>
+                        <span class="tech-tag">Hustle</span>
+                        <span class="tech-tag">Evolve</span>
+                    </div>
+                    <a href="#" class="btn"> Build in Progress</a>
+                </div>
+            </div>
+            <!-- <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+                        alt="Blog Project">
+                </div>
+                <div class="project-info">
+                    <h3>SEO-Optimized Blog</h3>
+                    <p>Content platform that ranks on first page for competitive keywords.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">SEO</span>
+                        <span class="tech-tag">Content Strategy</span>
+                    </div>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Contact Information</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>arshadkhan121912@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 9918019406</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p> India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Follow Me</h3>
+                    <p>Connect with me on social media</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a
+                            href="https://www.linkedin.com/in/arshad-khan-492ab1261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/arshad_khan.786/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <a href="https://wa.me/919918019406" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a
+                href="https://www.linkedin.com/in/arshad-khan-492ab1261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/arshad_khan.786/"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="copyright">© 2025 Arshad Khan. All Rights Reserved. <br> Built with passion and perseverance</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
